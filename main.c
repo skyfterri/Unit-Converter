@@ -48,37 +48,37 @@ int main() {
 		}
 		switch(choice) {
 		case 1:
-			printf("You selected Volume conversion.\n");
+			volumeConversion();
 			break;
 		case 2:
-			printf("You selected Length conversion.\n");
+			//lengthConversion();
 			break;
 		case 3:
-			printf("You selected Weight conversion.\n");
+			//weightConversion();
 			break;
 		case 4:
 			temperatureConversion();
 			break;
 		case 5:
-			printf("You selected Energy conversion.\n");
+			//energyConversion();
 			break;
 		case 6:
-			printf("You selected Area conversion.\n");
+			//powerConversion();
 			break;
 		case 7:
-			printf("You selected Speed conversion.\n");
+			//areaConversion();
 			break;
 		case 8:
-			printf("You selected Time conversion.\n");
+			//speedConversion();
 			break;
 		case 9:
-			printf("You selected Power conversion.\n");
+			//timeConversion();
 			break;
 		case 10:
-			printf("You selected Pressure conversion.\n");
+			//pressureConversion();
 			break;
 		case 11:
-			printf("You selected Angle conversion.\n");
+			//angleConversion();
 			break;
 		case 0:
 			printf("Exiting the program.\n");
@@ -133,6 +133,176 @@ bool getValidNumber(double *num, char *input) {
 
 // 2. Conversion functions
 
+void volumeConversion() {
+	double liter, gallon, barrel, ounce, pint;
+	char input[BUFFER_SIZE];
+	printf("| Liters (L)         | Gallons (gal)      | Barrel (bbl)       | Fluid Ounce (fl oz)| Pint (pt)          |\n");
+	printf("|--------------------|--------------------|--------------------|--------------------|--------------------|\n");
+	printf("|");
+
+	if (!getValidNumber(&liter, input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|");
+		moveCursorToColumn(85);
+		printf("|");
+		moveCursorToColumn(106);
+		printf("|\n\n");
+		return;
+	}
+
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+
+		if (!getValidNumber(&gallon, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|");
+			moveCursorToColumn(85);
+			printf("|");
+			moveCursorToColumn(106);
+			printf("|\n\n");
+			return;
+		}
+
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+
+			if (!getValidNumber(&barrel, input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|");
+				moveCursorToColumn(85);
+				printf("|");
+				moveCursorToColumn(106);
+				printf("|\n\n");
+				return;
+			}
+
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|");
+
+				if (!getValidNumber(&ounce, input)) {
+					moveCursorToColumn(85);
+					moveCursorUp();
+					moveCursorUp();
+					printf("|");
+					moveCursorToColumn(106);
+					printf("|\n\n");
+					return;
+				}
+
+				if (strcmp(input, "") == 0) {
+					moveCursorToColumn(85);
+					moveCursorUp();
+					printf("|");
+
+					if (!getValidNumber(&pint, input)) {
+						moveCursorToColumn(106);
+						moveCursorUp();
+						moveCursorUp();
+						printf("|\n\n");
+						return;
+					}
+
+					if (strcmp(input, "") == 0) {
+						moveCursorToColumn(106);
+						moveCursorUp();
+						printf("|\n");
+						printf("No Numbers entered!\n");
+						return;
+					}
+					else {
+						moveCursorToColumn(0);
+						moveCursorUp();
+						printf("|%lf",pint * 0.473176);
+						moveCursorToColumn(22);
+						printf("|%lf",pint / 8.0);
+						moveCursorToColumn(43);
+						printf("|%lf",pint / 336.0);
+						moveCursorToColumn(64);
+						printf("|%lf",pint * 16.0);
+						moveCursorToColumn(106);
+						printf("|\n");
+						return;
+					}
+				}
+				else {
+					moveCursorToColumn(0);
+					moveCursorUp();
+					printf("|%lf",ounce * 0.0295735);
+					moveCursorToColumn(22);
+					printf("|%lf",ounce * 0.0078125);
+					moveCursorToColumn(43);
+					printf("|%lf",ounce * 0.000186);
+					moveCursorToColumn(85);
+					printf("|%lf",ounce / 16.0);
+					moveCursorToColumn(106);
+					printf("|\n");
+					return;
+				}
+			}
+			else {
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printf("|%lf",barrel * 159);
+				moveCursorToColumn(22);
+				printf("|%lf",barrel * 42);
+				moveCursorToColumn(64);
+				printf("|%lf",barrel * 42 * 128);
+				moveCursorToColumn(85);
+				printf("|%lf",barrel * 42 * 8);
+				moveCursorToColumn(106);
+				printf("|\n");
+				return;
+			}
+		}
+		else {
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printf("|%lf",gallon * 3.78541);
+			moveCursorToColumn(43);
+			printf("|%lf",gallon / 42.0);
+			moveCursorToColumn(64);
+			printf("|%lf",gallon * 128.0);
+			moveCursorToColumn(85);
+			printf("|%lf",gallon * 8.0);
+			moveCursorToColumn(106);
+			printf("|\n");
+			return;
+		}
+	}
+	else {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|%lf",liter * 0.264172);
+		moveCursorToColumn(43);
+		printf("|%lf",liter / 158.987);
+		moveCursorToColumn(64);
+		printf("|%lf",liter * 33.814);
+		moveCursorToColumn(85);
+		printf("|%lf",liter * 2.11338);
+		moveCursorToColumn(106);
+		printf("|\n");
+		return;
+	}
+}
+
 void temperatureConversion() {
 	double celsius, fahrenheit, kelvin;
 	char input[BUFFER_SIZE];
@@ -141,7 +311,7 @@ void temperatureConversion() {
 	printf("|");
 
 	if (!getValidNumber(&celsius, input)) {
-	    moveCursorToColumn(22);
+		moveCursorToColumn(22);
 		moveCursorUp();
 		moveCursorUp();
 		printf("|");
@@ -156,12 +326,12 @@ void temperatureConversion() {
 		moveCursorUp();
 		printf("|");
 		if (!getValidNumber(&fahrenheit, input)) {
-		    moveCursorToColumn(43);
-		    moveCursorUp();
-		    moveCursorUp();
-		    printf("|");
-		    moveCursorToColumn(64);
-		    printf("|\n\n");
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|\n\n");
 			return;
 		}
 		if (strcmp(input, "") == 0) {
@@ -169,10 +339,10 @@ void temperatureConversion() {
 			moveCursorUp();
 			printf("|");
 			if (!getValidNumber(&kelvin, input)) {
-			    moveCursorToColumn(64);
-			    moveCursorUp();
-		        moveCursorUp();
-		        printf("|\n\n");
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|\n\n");
 				return;
 			}
 			if (strcmp(input, "") == 0) {
