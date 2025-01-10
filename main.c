@@ -139,7 +139,6 @@ void volumeConversion() {
 	printf("| Liters (L)         | Gallons (gal)      | Barrel (bbl)       | Fluid Ounce (fl oz)| Pint (pt)          |\n");
 	printf("|--------------------|--------------------|--------------------|--------------------|--------------------|\n");
 	printf("|");
-
 	if (!getValidNumber(&liter, input)) {
 		moveCursorToColumn(22);
 		moveCursorUp();
@@ -155,12 +154,10 @@ void volumeConversion() {
 		printf("|\n\n");
 		return;
 	}
-
 	if (strcmp(input, "") == 0) {
 		moveCursorToColumn(22);
 		moveCursorUp();
 		printf("|");
-
 		if (!getValidNumber(&gallon, input)) {
 			moveCursorToColumn(43);
 			moveCursorUp();
@@ -174,12 +171,10 @@ void volumeConversion() {
 			printf("|\n\n");
 			return;
 		}
-
 		if (strcmp(input, "") == 0) {
 			moveCursorToColumn(43);
 			moveCursorUp();
 			printf("|");
-
 			if (!getValidNumber(&barrel, input)) {
 				moveCursorToColumn(64);
 				moveCursorUp();
@@ -191,12 +186,10 @@ void volumeConversion() {
 				printf("|\n\n");
 				return;
 			}
-
 			if (strcmp(input, "") == 0) {
 				moveCursorToColumn(64);
 				moveCursorUp();
 				printf("|");
-
 				if (!getValidNumber(&ounce, input)) {
 					moveCursorToColumn(85);
 					moveCursorUp();
@@ -206,12 +199,10 @@ void volumeConversion() {
 					printf("|\n\n");
 					return;
 				}
-
 				if (strcmp(input, "") == 0) {
 					moveCursorToColumn(85);
 					moveCursorUp();
 					printf("|");
-
 					if (!getValidNumber(&pint, input)) {
 						moveCursorToColumn(106);
 						moveCursorUp();
@@ -219,7 +210,6 @@ void volumeConversion() {
 						printf("|\n\n");
 						return;
 					}
-
 					if (strcmp(input, "") == 0) {
 						moveCursorToColumn(106);
 						moveCursorUp();
@@ -309,7 +299,6 @@ void temperatureConversion() {
 	printf("| Celsius (°C)       | Fahrenheit (°F)    | Kelvin (K)         |\n");
 	printf("|--------------------|--------------------|--------------------|\n");
 	printf("|");
-
 	if (!getValidNumber(&celsius, input)) {
 		moveCursorToColumn(22);
 		moveCursorUp();
