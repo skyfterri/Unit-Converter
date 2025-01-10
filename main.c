@@ -141,6 +141,14 @@ void temperatureConversion() {
 	printf("|");
 
 	if (!getValidNumber(&celsius, input)) {
+	    moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|\n\n");
 		return;
 	}
 	if (strcmp(input, "") == 0) {
@@ -148,6 +156,12 @@ void temperatureConversion() {
 		moveCursorUp();
 		printf("|");
 		if (!getValidNumber(&fahrenheit, input)) {
+		    moveCursorToColumn(43);
+		    moveCursorUp();
+		    moveCursorUp();
+		    printf("|");
+		    moveCursorToColumn(64);
+		    printf("|\n\n");
 			return;
 		}
 		if (strcmp(input, "") == 0) {
@@ -155,6 +169,10 @@ void temperatureConversion() {
 			moveCursorUp();
 			printf("|");
 			if (!getValidNumber(&kelvin, input)) {
+			    moveCursorToColumn(64);
+			    moveCursorUp();
+		        moveCursorUp();
+		        printf("|\n\n");
 				return;
 			}
 			if (strcmp(input, "") == 0) {
