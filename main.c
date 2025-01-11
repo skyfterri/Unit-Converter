@@ -52,7 +52,7 @@ int main() {
 			volumeConversion();
 			break;
 		case 2:
-			//lengthConversion();
+			lengthConversion();
 			break;
 		case 3:
 			//weightConversion();
@@ -135,12 +135,12 @@ bool getValidNumber(double *num, char *input) {
 // 2. Conversion functions
 
 void volumeConversion() {
-	double liter, gallon, barrel, ounce, pint;
+	double liters, gallons, barrels, ounces, pints;
 	char input[BUFFER_SIZE];
-	printf("| Liters (L)         | Gallons (gal)      | Barrel (bbl [oil]) | Fluid Ounce (fl oz)| Pint (pt)          |\n");
+	printf("| Liters (L)         | Gallons (gal)      | Barrels (bbl [oil])| Ounces (fl oz)     | Pints (pt)         |\n");
 	printf("|--------------------|--------------------|--------------------|--------------------|--------------------|\n");
 	printf("|");
-	if (!getValidNumber(&liter, input)) {
+	if (!getValidNumber(&liters, input)) {
 		moveCursorToColumn(22);
 		moveCursorUp();
 		moveCursorUp();
@@ -159,7 +159,7 @@ void volumeConversion() {
 		moveCursorToColumn(22);
 		moveCursorUp();
 		printf("|");
-		if (!getValidNumber(&gallon, input)) {
+		if (!getValidNumber(&gallons, input)) {
 			moveCursorToColumn(43);
 			moveCursorUp();
 			moveCursorUp();
@@ -176,7 +176,7 @@ void volumeConversion() {
 			moveCursorToColumn(43);
 			moveCursorUp();
 			printf("|");
-			if (!getValidNumber(&barrel, input)) {
+			if (!getValidNumber(&barrels, input)) {
 				moveCursorToColumn(64);
 				moveCursorUp();
 				moveCursorUp();
@@ -191,7 +191,7 @@ void volumeConversion() {
 				moveCursorToColumn(64);
 				moveCursorUp();
 				printf("|");
-				if (!getValidNumber(&ounce, input)) {
+				if (!getValidNumber(&ounces, input)) {
 					moveCursorToColumn(85);
 					moveCursorUp();
 					moveCursorUp();
@@ -204,7 +204,7 @@ void volumeConversion() {
 					moveCursorToColumn(85);
 					moveCursorUp();
 					printf("|");
-					if (!getValidNumber(&pint, input)) {
+					if (!getValidNumber(&pints, input)) {
 						moveCursorToColumn(106);
 						moveCursorUp();
 						moveCursorUp();
@@ -219,7 +219,7 @@ void volumeConversion() {
 						return;
 					}
 					else {
-						if (pint < 0) {
+						if (pints < 0) {
 							printf("Negative volume doesnt exist!\n");
 							moveCursorToColumn(106);
 							moveCursorUp();
@@ -229,20 +229,20 @@ void volumeConversion() {
 						}
 						moveCursorToColumn(0);
 						moveCursorUp();
-						printResult(pint * 0.473176473);
+						printResult(pints * 0.473176473);
 						moveCursorToColumn(22);
-						printResult(pint * 0.125);
+						printResult(pints * 0.125);
 						moveCursorToColumn(43);
-						printResult(pint / 336.0);
+						printResult(pints / 336.0);
 						moveCursorToColumn(64);
-						printResult(pint * 16.0);
+						printResult(pints * 16.0);
 						moveCursorToColumn(106);
 						printf("|\n");
 						return;
 					}
 				}
 				else {
-					if (ounce < 0) {
+					if (ounces < 0) {
 						printf("Negative volume doesnt exist!\n");
 						moveCursorToColumn(85);
 						moveCursorUp();
@@ -254,20 +254,20 @@ void volumeConversion() {
 					}
 					moveCursorToColumn(0);
 					moveCursorUp();
-					printResult(ounce * 0.0295735296);
+					printResult(ounces * 0.0295735296);
 					moveCursorToColumn(22);
-					printResult(ounce * 0.0078125);
+					printResult(ounces * 0.0078125);
 					moveCursorToColumn(43);
-					printResult(ounce * 0.0001860119);
+					printResult(ounces * 0.0001860119);
 					moveCursorToColumn(85);
-					printResult(ounce * 0.0625);
+					printResult(ounces * 0.0625);
 					moveCursorToColumn(106);
 					printf("|\n");
 					return;
 				}
 			}
 			else {
-				if (barrel < 0)
+				if (barrels < 0)
 				{
 					printf("Negative volume doesnt exist!\n");
 					moveCursorToColumn(64);
@@ -282,20 +282,20 @@ void volumeConversion() {
 				}
 				moveCursorToColumn(0);
 				moveCursorUp();
-				printResult(barrel * 158.987294928);
+				printResult(barrels * 158.987294928);
 				moveCursorToColumn(22);
-				printResult(barrel * 42);
+				printResult(barrels * 42);
 				moveCursorToColumn(64);
-				printResult(barrel * 5376);
+				printResult(barrels * 5376);
 				moveCursorToColumn(85);
-				printResult(barrel * 336);
+				printResult(barrels * 336);
 				moveCursorToColumn(106);
 				printf("|\n");
 				return;
 			}
 		}
 		else {
-			if(gallon < 0) {
+			if(gallons < 0) {
 				printf("Negative volume doesnt exist!\n");
 				moveCursorToColumn(43);
 				moveCursorUp();
@@ -311,20 +311,20 @@ void volumeConversion() {
 			}
 			moveCursorToColumn(0);
 			moveCursorUp();
-			printResult(gallon * 3.785411784);
+			printResult(gallons * 3.785411784);
 			moveCursorToColumn(43);
-			printResult(gallon * 0.0238095238);
+			printResult(gallons * 0.0238095238);
 			moveCursorToColumn(64);
-			printResult(gallon * 128.0);
+			printResult(gallons * 128.0);
 			moveCursorToColumn(85);
-			printResult(gallon * 8.0);
+			printResult(gallons * 8.0);
 			moveCursorToColumn(106);
 			printf("|\n");
 			return;
 		}
 	}
 	else {
-		if(liter < 0) {
+		if(liters < 0) {
 			printf("Negative volume doesnt exist!\n");
 			moveCursorToColumn(22);
 			moveCursorUp();
@@ -342,13 +342,234 @@ void volumeConversion() {
 		}
 		moveCursorToColumn(22);
 		moveCursorUp();
-		printResult(liter * 0.2641720524);
+		printResult(liters * 0.2641720524);
 		moveCursorToColumn(43);
-		printResult(liter * 0.0062898108);
+		printResult(liters * 0.0062898108);
 		moveCursorToColumn(64);
-		printResult(liter * 33.8140227018);
+		printResult(liters * 33.8140227018);
 		moveCursorToColumn(85);
-		printResult(liter * 2.1133764189);
+		printResult(liters * 2.1133764189);
+		moveCursorToColumn(106);
+		printf("|\n");
+		return;
+	}
+}
+
+void lengthConversion() {
+	double meters, miles, inches, feet, yards;
+	char input[BUFFER_SIZE];
+	printf("| Meters (m)         | Miles (mi)         | Inches (in)        | Feet (ft)          | Yards (yd)         |\n");
+	printf("|--------------------|--------------------|--------------------|--------------------|--------------------|\n");
+	printf("|");
+	if (!getValidNumber(&meters, input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|");
+		moveCursorToColumn(85);
+		printf("|");
+		moveCursorToColumn(106);
+		printf("|\n\n");
+		return;
+	}
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+		if (!getValidNumber(&miles, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|");
+			moveCursorToColumn(85);
+			printf("|");
+			moveCursorToColumn(106);
+			printf("|\n\n");
+			return;
+		}
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+			if (!getValidNumber(&inches, input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|");
+				moveCursorToColumn(85);
+				printf("|");
+				moveCursorToColumn(106);
+				printf("|\n\n");
+				return;
+			}
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|");
+				if (!getValidNumber(&feet, input)) {
+					moveCursorToColumn(85);
+					moveCursorUp();
+					moveCursorUp();
+					printf("|");
+					moveCursorToColumn(106);
+					printf("|\n\n");
+					return;
+				}
+				if (strcmp(input, "") == 0) {
+					moveCursorToColumn(85);
+					moveCursorUp();
+					printf("|");
+					if (!getValidNumber(&yards, input)) {
+						moveCursorToColumn(106);
+						moveCursorUp();
+						moveCursorUp();
+						printf("|\n\n");
+						return;
+					}
+					if (strcmp(input, "") == 0) {
+						moveCursorToColumn(106);
+						moveCursorUp();
+						printf("|\n");
+						printf("No Numbers entered!\n");
+						return;
+					}
+					else {
+						if (yards < 0) {
+							printf("Negative length doesnt exist!\n");
+							moveCursorToColumn(106);
+							moveCursorUp();
+							moveCursorUp();
+							printf("|\n\n");
+							return;
+						}
+						moveCursorToColumn(0);
+						moveCursorUp();
+						printResult(yards * 0.9144);
+						moveCursorToColumn(22);
+						printResult(yards * 0.0005681818);
+						moveCursorToColumn(43);
+						printResult(yards * 36);
+						moveCursorToColumn(64);
+						printResult(yards * 3);
+						moveCursorToColumn(106);
+						printf("|\n");
+						return;
+					}
+				}
+				else {
+					if (feet < 0) {
+						printf("Negative length doesnt exist!\n");
+						moveCursorToColumn(85);
+						moveCursorUp();
+						moveCursorUp();
+						printf("|");
+						moveCursorToColumn(106);
+						printf("|\n\n");
+						return;
+					}
+					moveCursorToColumn(0);
+					moveCursorUp();
+					printResult(feet * 0.3048);
+					moveCursorToColumn(22);
+					printResult(feet * 0.0001893939);
+					moveCursorToColumn(43);
+					printResult(feet * 12);
+					moveCursorToColumn(85);
+					printResult(feet / 3.0);
+					moveCursorToColumn(106);
+					printf("|\n");
+					return;
+				}
+			}
+			else {
+				if (inches < 0)
+				{
+					printf("Negative length doesnt exist!\n");
+					moveCursorToColumn(64);
+					moveCursorUp();
+					moveCursorUp();
+					printf("|");
+					moveCursorToColumn(85);
+					printf("|");
+					moveCursorToColumn(106);
+					printf("|\n\n");
+					return;
+				}
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printResult(inches * 0.0254);
+				moveCursorToColumn(22);
+				printResult(inches * 1.57828e-5);
+				moveCursorToColumn(64);
+				printResult(inches * 0.0833333333);
+				moveCursorToColumn(85);
+				printResult(inches * 0.0277777778);
+				moveCursorToColumn(106);
+				printf("|\n");
+				return;
+			}
+		}
+		else {
+			if(miles < 0) {
+				printf("Negative length doesnt exist!\n");
+				moveCursorToColumn(43);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|");
+				moveCursorToColumn(64);
+				printf("|");
+				moveCursorToColumn(85);
+				printf("|");
+				moveCursorToColumn(106);
+				printf("|\n\n");
+				return;
+			}
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printResult(miles * 1609.344);
+			moveCursorToColumn(43);
+			printResult(miles * 63360);
+			moveCursorToColumn(64);
+			printResult(miles * 5280);
+			moveCursorToColumn(85);
+			printResult(miles * 1760);
+			moveCursorToColumn(106);
+			printf("|\n");
+			return;
+		}
+	}
+	else {
+		if(meters < 0) {
+			printf("Negative length doesnt exist!\n");
+			moveCursorToColumn(22);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(43);
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|");
+			moveCursorToColumn(85);
+			printf("|");
+			moveCursorToColumn(106);
+			printf("|\n\n");
+			return;
+		}
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printResult(meters * 0.0006213712);
+		moveCursorToColumn(43);
+		printResult(meters * 39.3700787402);
+		moveCursorToColumn(64);
+		printResult(meters * 3.280839895);
+		moveCursorToColumn(85);
+		printResult(meters * 1.0936132983);
 		moveCursorToColumn(106);
 		printf("|\n");
 		return;
