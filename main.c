@@ -33,6 +33,7 @@ void angleConversion();
 // 3. Output functions
 
 void printMenu();
+void printResult(double num);
 void moveCursorToColumn(int column);
 void moveCursorUp();
 
@@ -136,7 +137,7 @@ bool getValidNumber(double *num, char *input) {
 void volumeConversion() {
 	double liter, gallon, barrel, ounce, pint;
 	char input[BUFFER_SIZE];
-	printf("| Liters (L)         | Gallons (gal)      | Barrel (bbl)       | Fluid Ounce (fl oz)| Pint (pt)          |\n");
+	printf("| Liters (L)         | Gallons (gal)      | Barrel (bbl [oil]) | Fluid Ounce (fl oz)| Pint (pt)          |\n");
 	printf("|--------------------|--------------------|--------------------|--------------------|--------------------|\n");
 	printf("|");
 	if (!getValidNumber(&liter, input)) {
@@ -218,75 +219,136 @@ void volumeConversion() {
 						return;
 					}
 					else {
+					    if (pint < 0){
+					        printf("Negative volume doesnt exist!\n");
+					        moveCursorToColumn(106);
+						    moveCursorUp();
+					        moveCursorUp();
+						    printf("|\n\n");
+						    return;
+					    }
 						moveCursorToColumn(0);
 						moveCursorUp();
-						printf("|%lf",pint * 0.473176);
+						printResult(pint * 0.473176473);
 						moveCursorToColumn(22);
-						printf("|%lf",pint / 8.0);
+						printResult(pint * 0.125);
 						moveCursorToColumn(43);
-						printf("|%lf",pint / 336.0);
+						printResult(pint / 336.0);
 						moveCursorToColumn(64);
-						printf("|%lf",pint * 16.0);
+						printResult(pint * 16.0);
 						moveCursorToColumn(106);
 						printf("|\n");
 						return;
 					}
 				}
 				else {
+				    if (ounce < 0){
+				        printf("Negative volume doesnt exist!\n");
+				        moveCursorToColumn(85);
+					    moveCursorUp();
+					    moveCursorUp();
+					    printf("|");
+					    moveCursorToColumn(106);
+					    printf("|\n\n");
+					    return;
+				    }
 					moveCursorToColumn(0);
 					moveCursorUp();
-					printf("|%lf",ounce * 0.0295735);
+					printResult(ounce * 0.0295735296);
 					moveCursorToColumn(22);
-					printf("|%lf",ounce * 0.0078125);
+					printResult(ounce * 0.0078125);
 					moveCursorToColumn(43);
-					printf("|%lf",ounce * 0.000186);
+					printResult(ounce * 0.0001860119);
 					moveCursorToColumn(85);
-					printf("|%lf",ounce / 16.0);
+					printResult(ounce * 0.0625);
 					moveCursorToColumn(106);
 					printf("|\n");
 					return;
 				}
 			}
 			else {
+			    if (barrel < 0)
+			    {
+			        printf("Negative volume doesnt exist!\n");
+			        moveCursorToColumn(64);
+				    moveCursorUp();
+			    	moveCursorUp();
+			    	printf("|");
+				    moveCursorToColumn(85);
+				    printf("|");
+				    moveCursorToColumn(106);
+				    printf("|\n\n");
+				    return;
+			    }
 				moveCursorToColumn(0);
 				moveCursorUp();
-				printf("|%lf",barrel * 159);
+				printResult(barrel * 158.987294928);
 				moveCursorToColumn(22);
-				printf("|%lf",barrel * 42);
+				printResult(barrel * 42);
 				moveCursorToColumn(64);
-				printf("|%lf",barrel * 42 * 128);
+				printResult(barrel * 5376);
 				moveCursorToColumn(85);
-				printf("|%lf",barrel * 42 * 8);
+				printResult(barrel * 336);
 				moveCursorToColumn(106);
 				printf("|\n");
 				return;
 			}
 		}
 		else {
+		    if(gallon < 0){
+		        printf("Negative volume doesnt exist!\n");
+		        	moveCursorToColumn(43);
+			        moveCursorUp();
+		        	moveCursorUp();
+			        printf("|");
+			        moveCursorToColumn(64);
+			        printf("|");
+			        moveCursorToColumn(85);
+			        printf("|");
+		        	moveCursorToColumn(106);
+			        printf("|\n\n");
+		        	return;
+		    }
 			moveCursorToColumn(0);
 			moveCursorUp();
-			printf("|%lf",gallon * 3.78541);
+			printResult(gallon * 3.785411784);
 			moveCursorToColumn(43);
-			printf("|%lf",gallon / 42.0);
+			printResult(gallon * 0.0238095238);
 			moveCursorToColumn(64);
-			printf("|%lf",gallon * 128.0);
+			printResult(gallon * 128.0);
 			moveCursorToColumn(85);
-			printf("|%lf",gallon * 8.0);
+			printResult(gallon * 8.0);
 			moveCursorToColumn(106);
 			printf("|\n");
 			return;
 		}
 	}
 	else {
+	    if(liter < 0){
+	        printf("Negative volume doesnt exist!\n");
+	        moveCursorToColumn(22);
+		    moveCursorUp();
+		    moveCursorUp();
+		    printf("|");
+		    moveCursorToColumn(43);
+		    printf("|");
+		    moveCursorToColumn(64);
+		    printf("|");
+		    moveCursorToColumn(85);
+		    printf("|");
+		    moveCursorToColumn(106);
+		    printf("|\n\n");
+	        return;
+	    }
 		moveCursorToColumn(22);
 		moveCursorUp();
-		printf("|%lf",liter * 0.264172);
+		printResult(liter * 0.2641720524);
 		moveCursorToColumn(43);
-		printf("|%lf",liter / 158.987);
+		printResult(liter * 0.0062898108);
 		moveCursorToColumn(64);
-		printf("|%lf",liter * 33.814);
+		printResult(liter * 33.8140227018);
 		moveCursorToColumn(85);
-		printf("|%lf",liter * 2.11338);
+		printResult(liter * 2.1133764189);
 		moveCursorToColumn(106);
 		printf("|\n");
 		return;
@@ -345,42 +407,60 @@ void temperatureConversion() {
 				if(kelvin >= 0.0) {
 					moveCursorToColumn(0);
 					moveCursorUp();
-					printf("|%lf",kelvin - 273.15);
+					printResult(kelvin - 273.15);
 					moveCursorToColumn(22);
-					printf("|%lf",((kelvin-273.15)*1.8)+32);
+					printResult(((kelvin-273.15)*1.8)+32);
 					moveCursorToColumn(64);
 					printf("|\n");
 					return;
 				}
 				printf ("The lowest temperature on the Kelvin scale is 0K. \n");
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|\n\n");
 			}
 		}
 		else {
 			if(fahrenheit >= -459.67) {
 				moveCursorToColumn(0);
 				moveCursorUp();
-				printf("|%lf",(fahrenheit-32)*5/9);
+				printResult((fahrenheit-32)*5/9);
 				moveCursorToColumn(43);
-				printf("|%lf",((fahrenheit-32)*5/9)+273.15);
+				printResult(((fahrenheit-32)*5/9)+273.15);
 				moveCursorToColumn(64);
 				printf("|\n");
 				return;
 			}
 			printf ("The lowest temperature on the Fahrenheit scale is -459.67°F. \n");
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|\n\n");
 		}
 	}
 	else {
 		if (celsius >= -273.15) {
 			moveCursorToColumn(22);
 			moveCursorUp();
-			printf("|%lf",(celsius * 1.8) + 32);
+			printResult((celsius * 1.8) + 32);
 			moveCursorToColumn(43);
-			printf("|%lf",celsius + 273.15);
+			printResult(celsius + 273.15);
 			moveCursorToColumn(64);
 			printf("|\n");
 			return;
 		}
 		printf ("The lowest temperature on the Celsius scale is -273.15°C. \n");
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|\n\n");
 	}
 }
 
@@ -396,6 +476,26 @@ void printMenu() {
 	printf("7 -> Area          8 -> Speed         9 -> Time\n");
 	// Group 4: Pressure and angular measurements
 	printf("10 -> Pressure     11 -> Angle        0 -> Exit\n");
+}
+
+void printResult(double num) {
+    char buffer[50];
+    // Format the number without trailing zeros and left-aligned
+    if (floor(num) == num) {
+        // It's an integer
+        if (snprintf(buffer, sizeof(buffer), "%-20.0f", num) > 20) {
+            // If the formatted number exceeds 20 characters, print in scientific notation
+            snprintf(buffer, sizeof(buffer), "%-20.0e", num);
+        }
+    } else {
+        // It's a floating-point number, print it in full width (20 characters) without trailing zeroes
+        if (snprintf(buffer, sizeof(buffer), "%-20.10g", num) > 20) {
+            // If the formatted number exceeds 20 characters, print in scientific notation
+            snprintf(buffer, sizeof(buffer), "%-20.10e", num);
+        }
+    }
+    // Print the result
+    printf("|%s", buffer);
 }
 
 void moveCursorToColumn(int column) {
