@@ -64,7 +64,7 @@ int main() {
 			energyConversion();
 			break;
 		case 6:
-			//powerConversion();
+			powerConversion();
 			break;
 		case 7:
 			//areaConversion();
@@ -788,7 +788,7 @@ void temperatureConversion() {
 				return;
 			}
 			else {
-				if(kelvin >= 0.0) {
+				if(kelvin >= 0) {
 					moveCursorToColumn(0);
 					moveCursorUp();
 					printResult(kelvin - 273.15);
@@ -1008,6 +1008,116 @@ void energyConversion() {
 		moveCursorToColumn(85);
 		printf("|\n");
 		return;
+	}
+}
+
+void powerConversion() {
+	double watts, horsepower, btu_hour;
+	char input[BUFFER_SIZE];
+	printf("| Watts (W)          | Horsepower (hp)    | BTUs/hour (btu/h)  |\n");
+	printf("|--------------------|--------------------|--------------------|\n");
+	printf("|");
+	if (!getValidNumber(&watts, input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|\n\n");
+		return;
+	}
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+		if (!getValidNumber(&horsepower, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|\n\n");
+			return;
+		}
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+			if (!getValidNumber(&btu_hour, input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|\n\n");
+				return;
+			}
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|\n");
+				printf("No Numbers entered!\n");
+				return;
+			}
+			else {
+				if(btu_hour < 0) {
+					printf ("Negative power doesnt exist (theoretically real)!\n");
+				    moveCursorToColumn(64);
+				    moveCursorUp();
+				    moveCursorUp();
+				    printf("|\n\n");
+					return;
+				}
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printResult(btu_hour * 0.292875);
+				moveCursorToColumn(22);
+				printResult(btu_hour * 0.0003981992);
+				moveCursorToColumn(64);
+				printf("|\n");
+			}
+		}
+		else {
+			if(horsepower < 0) {
+				printf ("Negative power doesnt exist (theoretically real)!\n");
+			    moveCursorToColumn(43);
+			    moveCursorUp();
+			    moveCursorUp();
+			    printf("|");
+			    moveCursorToColumn(64);
+			    printf("|\n\n");
+				return;
+			}
+			
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printResult(horsepower * 735.49875);
+			moveCursorToColumn(43);
+			printResult(horsepower * 2511.3060179866);
+			moveCursorToColumn(64);
+			printf("|\n");
+		}
+	}
+	else {
+		if (watts < 0) {
+			printf ("Negative power doesnt exist (theoretically real)!\n");
+		    moveCursorToColumn(22);
+		    moveCursorUp();
+	    	moveCursorUp();
+	    	printf("|");
+	    	moveCursorToColumn(43);
+	    	printf("|");
+	    	moveCursorToColumn(64);
+	    	printf("|\n\n");
+			return;
+		}
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printResult(watts * 0.0013596216);
+		moveCursorToColumn(43);
+		printResult(watts * 3.4144259497);
+		moveCursorToColumn(64);
+		printf("|\n");
 	}
 }
 
