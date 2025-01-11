@@ -61,7 +61,7 @@ int main() {
 			temperatureConversion();
 			break;
 		case 5:
-			//energyConversion();
+			energyConversion();
 			break;
 		case 6:
 			//powerConversion();
@@ -592,8 +592,6 @@ void weightConversion() {
 		moveCursorToColumn(64);
 		printf("|");
 		moveCursorToColumn(85);
-		printf("|");
-		moveCursorToColumn(106);
 		printf("|\n\n");
 		return;
 	}
@@ -609,8 +607,6 @@ void weightConversion() {
 			moveCursorToColumn(64);
 			printf("|");
 			moveCursorToColumn(85);
-			printf("|");
-			moveCursorToColumn(106);
 			printf("|\n\n");
 			return;
 		}
@@ -624,8 +620,6 @@ void weightConversion() {
 				moveCursorUp();
 				printf("|");
 				moveCursorToColumn(85);
-				printf("|");
-				moveCursorToColumn(106);
 				printf("|\n\n");
 				return;
 			}
@@ -637,8 +631,6 @@ void weightConversion() {
 					moveCursorToColumn(85);
 					moveCursorUp();
 					moveCursorUp();
-					printf("|");
-					moveCursorToColumn(106);
 					printf("|\n\n");
 					return;
 				}
@@ -651,7 +643,7 @@ void weightConversion() {
 				}
 				else {
 					if (stones < 0) {
-						printf("Negative length doesnt exist!\n");
+						printf("Negative length doesnt exist (theoretical concept)!\n");
 						moveCursorToColumn(85);
 						moveCursorUp();
 						moveCursorUp();
@@ -673,7 +665,7 @@ void weightConversion() {
 			else {
 				if (ounces < 0)
 				{
-					printf("Negative length doesnt exist!\n");
+					printf("Negative length doesnt exist (theoretical concept)!\n");
 					moveCursorToColumn(64);
 					moveCursorUp();
 					moveCursorUp();
@@ -696,7 +688,7 @@ void weightConversion() {
 		}
 		else {
 			if(pounds < 0) {
-				printf("Negative length doesnt exist!\n");
+				printf("Negative length doesnt exist (theoretical concept)!\n");
 				moveCursorToColumn(43);
 				moveCursorUp();
 				moveCursorUp();
@@ -721,7 +713,7 @@ void weightConversion() {
 	}
 	else {
 		if(grams < 0) {
-			printf("Negative length doesnt exist!\n");
+			printf("Negative length doesnt exist (theoretical concept)!\n");
 			moveCursorToColumn(22);
 			moveCursorUp();
 			moveCursorUp();
@@ -853,6 +845,169 @@ void temperatureConversion() {
 		printf("|");
 		moveCursorToColumn(64);
 		printf("|\n\n");
+	}
+}
+
+void energyConversion() {
+	double joules, calories, electronvolts, btus;
+	char input[BUFFER_SIZE];
+	printf("| Joules (J)         | Calories (cal)     | Electronvolts (eV) | BTUs (btu)         |\n");
+	printf("|--------------------|--------------------|--------------------|--------------------|\n");
+	printf("|");
+	if (!getValidNumber(&joules, input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|");
+		moveCursorToColumn(85);
+		printf("|\n\n");
+		return;
+	}
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+		if (!getValidNumber(&calories, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|");
+			moveCursorToColumn(85);
+			printf("|\n\n");
+			return;
+		}
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+			if (!getValidNumber(&electronvolts, input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|");
+				moveCursorToColumn(85);
+				printf("|\n\n");
+				return;
+			}
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|");
+				if (!getValidNumber(&btus, input)) {
+					moveCursorToColumn(85);
+					moveCursorUp();
+					moveCursorUp();
+					printf("|\n\n");
+					return;
+				}
+				if (strcmp(input, "") == 0) {
+					moveCursorToColumn(85);
+					moveCursorUp();
+					printf("|\n");
+					printf("No Numbers entered!\n");
+					return;
+				}
+				else {
+					if (btus < 0) {
+						printf("Negative energy doesnt exist (theoretically real)!\n");
+						moveCursorToColumn(85);
+						moveCursorUp();
+						moveCursorUp();
+						printf("|\n\n");
+						return;
+					}
+					moveCursorToColumn(0);
+					moveCursorUp();
+					printResult(btus * 1054.3499999744);
+					moveCursorToColumn(22);
+					printResult(btus * 251.9956978906);
+					moveCursorToColumn(43);
+					printResult(btus * 6.5807350924984e+21);
+					moveCursorToColumn(85);
+					printf("|\n");
+					return;
+				}
+			}
+			else {
+				if (electronvolts < 0)
+				{
+					printf("Negative energy doesnt exist (theoretically real)!\n");
+					moveCursorToColumn(64);
+					moveCursorUp();
+					moveCursorUp();
+					printf("|");
+					moveCursorToColumn(85);
+					printf("|\n\n");
+					return;
+				}
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printResult(electronvolts * 1.6021766339999e-19);
+				moveCursorToColumn(22);
+				printResult(electronvolts * 3.8292940583172e-20);
+				moveCursorToColumn(64);
+				printResult(electronvolts * 1.5195870764346e-22);
+				moveCursorToColumn(85);
+				printf("|\n");
+				return;
+			}
+		}
+		else {
+			if(calories < 0) {
+				printf("Negative energy doesnt exist (theoretically real)!\n");
+				moveCursorToColumn(43);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|");
+				moveCursorToColumn(64);
+				printf("|");
+				moveCursorToColumn(85);
+				printf("|\n\n");
+				return;
+			}
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printResult(calories * 4.184);
+			moveCursorToColumn(43);
+			printResult(calories * 2.6114473967545e+19);
+			moveCursorToColumn(64);
+			printResult(calories * 0.0039683217);
+			moveCursorToColumn(85);
+			printf("|\n");
+			return;
+		}
+	}
+	else {
+		if(joules < 0) {
+			printf("Negative energy doesnt exist (theoretically real)!\n");
+			moveCursorToColumn(22);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(43);
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|");
+			moveCursorToColumn(85);
+			printf("|\n\n");
+			return;
+		}
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printResult(joules * 0.2390057361);
+		moveCursorToColumn(43);
+		printResult(joules * 6.241509074461e+18);
+		moveCursorToColumn(64);
+		printResult(joules * 0.0009484517);
+		moveCursorToColumn(85);
+		printf("|\n");
+		return;
 	}
 }
 
