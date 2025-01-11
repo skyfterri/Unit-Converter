@@ -219,14 +219,14 @@ void volumeConversion() {
 						return;
 					}
 					else {
-					    if (pint < 0){
-					        printf("Negative volume doesnt exist!\n");
-					        moveCursorToColumn(106);
-						    moveCursorUp();
-					        moveCursorUp();
-						    printf("|\n\n");
-						    return;
-					    }
+						if (pint < 0) {
+							printf("Negative volume doesnt exist!\n");
+							moveCursorToColumn(106);
+							moveCursorUp();
+							moveCursorUp();
+							printf("|\n\n");
+							return;
+						}
 						moveCursorToColumn(0);
 						moveCursorUp();
 						printResult(pint * 0.473176473);
@@ -242,16 +242,16 @@ void volumeConversion() {
 					}
 				}
 				else {
-				    if (ounce < 0){
-				        printf("Negative volume doesnt exist!\n");
-				        moveCursorToColumn(85);
-					    moveCursorUp();
-					    moveCursorUp();
-					    printf("|");
-					    moveCursorToColumn(106);
-					    printf("|\n\n");
-					    return;
-				    }
+					if (ounce < 0) {
+						printf("Negative volume doesnt exist!\n");
+						moveCursorToColumn(85);
+						moveCursorUp();
+						moveCursorUp();
+						printf("|");
+						moveCursorToColumn(106);
+						printf("|\n\n");
+						return;
+					}
 					moveCursorToColumn(0);
 					moveCursorUp();
 					printResult(ounce * 0.0295735296);
@@ -267,19 +267,19 @@ void volumeConversion() {
 				}
 			}
 			else {
-			    if (barrel < 0)
-			    {
-			        printf("Negative volume doesnt exist!\n");
-			        moveCursorToColumn(64);
-				    moveCursorUp();
-			    	moveCursorUp();
-			    	printf("|");
-				    moveCursorToColumn(85);
-				    printf("|");
-				    moveCursorToColumn(106);
-				    printf("|\n\n");
-				    return;
-			    }
+				if (barrel < 0)
+				{
+					printf("Negative volume doesnt exist!\n");
+					moveCursorToColumn(64);
+					moveCursorUp();
+					moveCursorUp();
+					printf("|");
+					moveCursorToColumn(85);
+					printf("|");
+					moveCursorToColumn(106);
+					printf("|\n\n");
+					return;
+				}
 				moveCursorToColumn(0);
 				moveCursorUp();
 				printResult(barrel * 158.987294928);
@@ -295,20 +295,20 @@ void volumeConversion() {
 			}
 		}
 		else {
-		    if(gallon < 0){
-		        printf("Negative volume doesnt exist!\n");
-		        	moveCursorToColumn(43);
-			        moveCursorUp();
-		        	moveCursorUp();
-			        printf("|");
-			        moveCursorToColumn(64);
-			        printf("|");
-			        moveCursorToColumn(85);
-			        printf("|");
-		        	moveCursorToColumn(106);
-			        printf("|\n\n");
-		        	return;
-		    }
+			if(gallon < 0) {
+				printf("Negative volume doesnt exist!\n");
+				moveCursorToColumn(43);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|");
+				moveCursorToColumn(64);
+				printf("|");
+				moveCursorToColumn(85);
+				printf("|");
+				moveCursorToColumn(106);
+				printf("|\n\n");
+				return;
+			}
 			moveCursorToColumn(0);
 			moveCursorUp();
 			printResult(gallon * 3.785411784);
@@ -324,22 +324,22 @@ void volumeConversion() {
 		}
 	}
 	else {
-	    if(liter < 0){
-	        printf("Negative volume doesnt exist!\n");
-	        moveCursorToColumn(22);
-		    moveCursorUp();
-		    moveCursorUp();
-		    printf("|");
-		    moveCursorToColumn(43);
-		    printf("|");
-		    moveCursorToColumn(64);
-		    printf("|");
-		    moveCursorToColumn(85);
-		    printf("|");
-		    moveCursorToColumn(106);
-		    printf("|\n\n");
-	        return;
-	    }
+		if(liter < 0) {
+			printf("Negative volume doesnt exist!\n");
+			moveCursorToColumn(22);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(43);
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|");
+			moveCursorToColumn(85);
+			printf("|");
+			moveCursorToColumn(106);
+			printf("|\n\n");
+			return;
+		}
 		moveCursorToColumn(22);
 		moveCursorUp();
 		printResult(liter * 0.2641720524);
@@ -479,23 +479,23 @@ void printMenu() {
 }
 
 void printResult(double num) {
-    char buffer[50];
-    // Format the number without trailing zeros and left-aligned
-    if (floor(num) == num) {
-        // It's an integer
-        if (snprintf(buffer, sizeof(buffer), "%-20.0f", num) > 20) {
-            // If the formatted number exceeds 20 characters, print in scientific notation
-            snprintf(buffer, sizeof(buffer), "%-20.0e", num);
-        }
-    } else {
-        // It's a floating-point number, print it in full width (20 characters) without trailing zeroes
-        if (snprintf(buffer, sizeof(buffer), "%-20.10g", num) > 20) {
-            // If the formatted number exceeds 20 characters, print in scientific notation
-            snprintf(buffer, sizeof(buffer), "%-20.10e", num);
-        }
-    }
-    // Print the result
-    printf("|%s", buffer);
+	char buffer[50];
+	// Format the number without trailing zeros and left-aligned
+	if (floor(num) == num) {
+		// It's an integer
+		if (snprintf(buffer, sizeof(buffer), "%-20.0f", num) > 20) {
+			// If the formatted number exceeds 20 characters, print in scientific notation
+			snprintf(buffer, sizeof(buffer), "%-20.0e", num);
+		}
+	} else {
+		// It's a floating-point number, print it in full width (20 characters) without trailing zeroes
+		if (snprintf(buffer, sizeof(buffer), "%-20.10g", num) > 20) {
+			// If the formatted number exceeds 20 characters, print in scientific notation
+			snprintf(buffer, sizeof(buffer), "%-20.10e", num);
+		}
+	}
+	// Print the result
+	printf("|%s", buffer);
 }
 
 void moveCursorToColumn(int column) {
