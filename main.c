@@ -67,19 +67,19 @@ int main() {
 			powerConversion();
 			break;
 		case 7:
-			//areaConversion();
+			areaConversion();
 			break;
 		case 8:
-			//speedConversion();
+			speedConversion();
 			break;
 		case 9:
-			//timeConversion();
+			timeConversion();
 			break;
 		case 10:
-			//pressureConversion();
+			pressureConversion();
 			break;
 		case 11:
-			//angleConversion();
+			angleConversion();
 			break;
 		case 0:
 			printf("Exiting the program.\n");
@@ -1116,6 +1116,636 @@ void powerConversion() {
 		printResult(watts * 0.0013596216);
 		moveCursorToColumn(43);
 		printResult(watts * 3.4144259497);
+		moveCursorToColumn(64);
+		printf("|\n");
+	}
+}
+
+void areaConversion() {
+	double m², acres, rod²;
+	char input[BUFFER_SIZE];
+	printf("| Square meters (m²) | Acres (ac)         | Square rods (rod²) |\n");
+	printf("|--------------------|--------------------|--------------------|\n");
+	printf("|");
+	if (!getValidNumber(&m², input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|\n\n");
+		return;
+	}
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+		if (!getValidNumber(&acres, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|\n\n");
+			return;
+		}
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+			if (!getValidNumber(&rod², input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|\n\n");
+				return;
+			}
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|\n");
+				printf("No Numbers entered!\n");
+				return;
+			}
+			else {
+				if(rod² < 0) {
+					printf ("Negative area doesnt exist!\n");
+				    moveCursorToColumn(64);
+				    moveCursorUp();
+				    moveCursorUp();
+				    printf("|\n\n");
+					return;
+				}
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printResult(rod² * 25.29285264);
+				moveCursorToColumn(22);
+				printResult(rod² * 0.00625);
+				moveCursorToColumn(64);
+				printf("|\n");
+			}
+		}
+		else {
+			if(acres < 0) {
+				printf ("Negative area doesnt exist!\n");
+			    moveCursorToColumn(43);
+			    moveCursorUp();
+			    moveCursorUp();
+			    printf("|");
+			    moveCursorToColumn(64);
+			    printf("|\n\n");
+				return;
+			}
+			
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printResult(acres * 4046.8564224);
+			moveCursorToColumn(43);
+			printResult(acres * 160);
+			moveCursorToColumn(64);
+			printf("|\n");
+		}
+	}
+	else {
+		if (m² < 0) {
+			printf ("Negative area doesnt exist!\n");
+		    moveCursorToColumn(22);
+		    moveCursorUp();
+	    	moveCursorUp();
+	    	printf("|");
+	    	moveCursorToColumn(43);
+	    	printf("|");
+	    	moveCursorToColumn(64);
+	    	printf("|\n\n");
+			return;
+		}
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printResult(m² * 0.0002471054);
+		moveCursorToColumn(43);
+		printResult(m² * 0.039536861);
+		moveCursorToColumn(64);
+		printf("|\n");
+	}
+}
+
+void speedConversion() {
+	double mps, knots, mach;
+	char input[BUFFER_SIZE];
+	printf("| Meters per second  | Knots (kt, kn)     | Mach (SI standard) |\n");
+	printf("|--------------------|--------------------|--------------------|\n");
+	printf("|");
+	if (!getValidNumber(&mps, input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|\n\n");
+		return;
+	}
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+		if (!getValidNumber(&knots, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|\n\n");
+			return;
+		}
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+			if (!getValidNumber(&mach, input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|\n\n");
+				return;
+			}
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|\n");
+				printf("No Numbers entered!\n");
+				return;
+			}
+			else {
+				if(mach < 0) {
+					printf ("Negative speed doesnt exist!\n");
+				    moveCursorToColumn(64);
+				    moveCursorUp();
+				    moveCursorUp();
+				    printf("|\n\n");
+					return;
+				}
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printResult(mach * 295.0464000003);
+				moveCursorToColumn(22);
+				printResult(mach * 573.524319655);
+				moveCursorToColumn(64);
+				printf("|\n");
+			}
+		}
+		else {
+			if(knots < 0) {
+				printf ("Negative speed doesnt exist!\n");
+			    moveCursorToColumn(43);
+			    moveCursorUp();
+			    moveCursorUp();
+			    printf("|");
+			    moveCursorToColumn(64);
+			    printf("|\n\n");
+				return;
+			}
+			
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printResult(knots * 0.5144444444);
+			moveCursorToColumn(43);
+			printResult(knots * 0.0017436052);
+			moveCursorToColumn(64);
+			printf("|\n");
+		}
+	}
+	else {
+		if (mps < 0) {
+			printf ("Negative speed doesnt exist!\n");
+		    moveCursorToColumn(22);
+		    moveCursorUp();
+	    	moveCursorUp();
+	    	printf("|");
+	    	moveCursorToColumn(43);
+	    	printf("|");
+	    	moveCursorToColumn(64);
+	    	printf("|\n\n");
+			return;
+		}
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printResult(mps * 1.9438444924);
+		moveCursorToColumn(43);
+		printResult(mps * 0.0033892974);
+		moveCursorToColumn(64);
+		printf("|\n");
+	}
+}
+
+void timeConversion() {
+	double seconds, minutes, hours, days, weeks;
+	char input[BUFFER_SIZE];
+	printf("| Seconds (s)        | Minutes (min)      | Hours (h)          | Days (d)           | Weeks              |\n");
+	printf("|--------------------|--------------------|--------------------|--------------------|--------------------|\n");
+	printf("|");
+	if (!getValidNumber(&seconds, input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|");
+		moveCursorToColumn(85);
+		printf("|");
+		moveCursorToColumn(106);
+		printf("|\n\n");
+		return;
+	}
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+		if (!getValidNumber(&minutes, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|");
+			moveCursorToColumn(85);
+			printf("|");
+			moveCursorToColumn(106);
+			printf("|\n\n");
+			return;
+		}
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+			if (!getValidNumber(&hours, input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|");
+				moveCursorToColumn(85);
+				printf("|");
+				moveCursorToColumn(106);
+				printf("|\n\n");
+				return;
+			}
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|");
+				if (!getValidNumber(&days, input)) {
+					moveCursorToColumn(85);
+					moveCursorUp();
+					moveCursorUp();
+					printf("|");
+					moveCursorToColumn(106);
+					printf("|\n\n");
+					return;
+				}
+				if (strcmp(input, "") == 0) {
+					moveCursorToColumn(85);
+					moveCursorUp();
+					printf("|");
+					if (!getValidNumber(&weeks, input)) {
+						moveCursorToColumn(106);
+						moveCursorUp();
+						moveCursorUp();
+						printf("|\n\n");
+						return;
+					}
+					if (strcmp(input, "") == 0) {
+						moveCursorToColumn(106);
+						moveCursorUp();
+						printf("|\n");
+						printf("No Numbers entered!\n");
+						return;
+					}
+					else {
+						if (weeks < 0) {
+							printf("Negative time doesnt exist!\n");
+							moveCursorToColumn(106);
+							moveCursorUp();
+							moveCursorUp();
+							printf("|\n\n");
+							return;
+						}
+						moveCursorToColumn(0);
+						moveCursorUp();
+						printResult(weeks * 604800);
+						moveCursorToColumn(22);
+						printResult(weeks * 10080);
+						moveCursorToColumn(43);
+						printResult(weeks * 168);
+						moveCursorToColumn(64);
+						printResult(weeks * 7);
+						moveCursorToColumn(106);
+						printf("|\n");
+						return;
+					}
+				}
+				else {
+					if (days < 0) {
+						printf("Negative time doesnt exist!\n");
+						moveCursorToColumn(85);
+						moveCursorUp();
+						moveCursorUp();
+						printf("|");
+						moveCursorToColumn(106);
+						printf("|\n\n");
+						return;
+					}
+					moveCursorToColumn(0);
+					moveCursorUp();
+					printResult(days * 86400);
+					moveCursorToColumn(22);
+					printResult(days * 1440);
+					moveCursorToColumn(43);
+					printResult(days * 24);
+					moveCursorToColumn(85);
+					printResult(days / 7.0);
+					moveCursorToColumn(106);
+					printf("|\n");
+					return;
+				}
+			}
+			else {
+				if (hours < 0)
+				{
+					printf("Negative time doesnt exist!\n");
+					moveCursorToColumn(64);
+					moveCursorUp();
+					moveCursorUp();
+					printf("|");
+					moveCursorToColumn(85);
+					printf("|");
+					moveCursorToColumn(106);
+					printf("|\n\n");
+					return;
+				}
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printResult(hours * 3600);
+				moveCursorToColumn(22);
+				printResult(hours * 60);
+				moveCursorToColumn(64);
+				printResult(hours / 24.0);
+				moveCursorToColumn(85);
+				printResult(hours / 168.0);
+				moveCursorToColumn(106);
+				printf("|\n");
+				return;
+			}
+		}
+		else {
+			if(minutes < 0) {
+				printf("Negative time doesnt exist!\n");
+				moveCursorToColumn(43);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|");
+				moveCursorToColumn(64);
+				printf("|");
+				moveCursorToColumn(85);
+				printf("|");
+				moveCursorToColumn(106);
+				printf("|\n\n");
+				return;
+			}
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printResult(minutes * 60);
+			moveCursorToColumn(43);
+			printResult(minutes / 60.0);
+			moveCursorToColumn(64);
+			printResult(minutes / 1440.0);
+			moveCursorToColumn(85);
+			printResult(minutes / 10080.0);
+			moveCursorToColumn(106);
+			printf("|\n");
+			return;
+		}
+	}
+	else {
+		if(seconds < 0) {
+			printf("Negative time doesnt exist!\n");
+			moveCursorToColumn(22);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(43);
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|");
+			moveCursorToColumn(85);
+			printf("|");
+			moveCursorToColumn(106);
+			printf("|\n\n");
+			return;
+		}
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printResult(seconds / 60.0);
+		moveCursorToColumn(43);
+		printResult(seconds / 3600.0);
+		moveCursorToColumn(64);
+		printResult(seconds / 86400.0);
+		moveCursorToColumn(85);
+		printResult(seconds / 604800.0);
+		moveCursorToColumn(106);
+		printf("|\n");
+		return;
+	}
+}
+
+void pressureConversion() {
+	double pascals, atmospheres, torrs;
+	char input[BUFFER_SIZE];
+	printf("| Pascals (Pa)       | Atmospheres (atm)  | Torrs (Torr)       |\n");
+	printf("|--------------------|--------------------|--------------------|\n");
+	printf("|");
+	if (!getValidNumber(&pascals, input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|\n\n");
+		return;
+	}
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+		if (!getValidNumber(&atmospheres, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|\n\n");
+			return;
+		}
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+			if (!getValidNumber(&torrs, input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|\n\n");
+				return;
+			}
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|\n");
+				printf("No Numbers entered!\n");
+				return;
+			}
+			else {
+				if(torrs < 0) {
+					printf ("Negative pressure doesnt exist!\n");
+				    moveCursorToColumn(64);
+				    moveCursorUp();
+				    moveCursorUp();
+				    printf("|\n\n");
+					return;
+				}
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printResult(torrs * 133.3223684211);
+				moveCursorToColumn(22);
+				printResult(torrs / 760.0);
+				moveCursorToColumn(64);
+				printf("|\n");
+			}
+		}
+		else {
+			if(atmospheres < 0) {
+				printf ("Negative pressure doesnt exist!\n");
+			    moveCursorToColumn(43);
+			    moveCursorUp();
+			    moveCursorUp();
+			    printf("|");
+			    moveCursorToColumn(64);
+			    printf("|\n\n");
+				return;
+			}
+			
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printResult(atmospheres * 101325);
+			moveCursorToColumn(43);
+			printResult(atmospheres * 760);
+			moveCursorToColumn(64);
+			printf("|\n");
+		}
+	}
+	else {
+		if (pascals < 0) {
+			printf ("Negative pressure doesnt exist!\n");
+		    moveCursorToColumn(22);
+		    moveCursorUp();
+	    	moveCursorUp();
+	    	printf("|");
+	    	moveCursorToColumn(43);
+	    	printf("|");
+	    	moveCursorToColumn(64);
+	    	printf("|\n\n");
+			return;
+		}
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printResult(pascals / 101325.0);
+		moveCursorToColumn(43);
+		printResult(pascals * 0.0075006168);
+		moveCursorToColumn(64);
+		printf("|\n");
+	}
+}
+
+void angleConversion() {
+	double degrees, radians, gradians;
+	char input[BUFFER_SIZE];
+	printf("| Degrees (°)        | Radians (rad)      | Gradians (gon)     |\n");
+	printf("|--------------------|--------------------|--------------------|\n");
+	printf("|");
+	if (!getValidNumber(&degrees, input)) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		moveCursorUp();
+		printf("|");
+		moveCursorToColumn(43);
+		printf("|");
+		moveCursorToColumn(64);
+		printf("|\n\n");
+		return;
+	}
+	if (strcmp(input, "") == 0) {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printf("|");
+		if (!getValidNumber(&radians, input)) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			moveCursorUp();
+			printf("|");
+			moveCursorToColumn(64);
+			printf("|\n\n");
+			return;
+		}
+		if (strcmp(input, "") == 0) {
+			moveCursorToColumn(43);
+			moveCursorUp();
+			printf("|");
+			if (!getValidNumber(&gradians, input)) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				moveCursorUp();
+				printf("|\n\n");
+				return;
+			}
+			if (strcmp(input, "") == 0) {
+				moveCursorToColumn(64);
+				moveCursorUp();
+				printf("|\n");
+				printf("No Numbers entered!\n");
+				return;
+			}
+			else {
+				moveCursorToColumn(0);
+				moveCursorUp();
+				printResult(gradians * 0.9);
+				moveCursorToColumn(22);
+				printResult(gradians * 0.0157079633);
+				moveCursorToColumn(64);
+				printf("|\n");
+			}
+		}
+		else {
+			moveCursorToColumn(0);
+			moveCursorUp();
+			printResult(radians * 57.2957795131);
+			moveCursorToColumn(43);
+			printResult(radians * 63.6619772368);
+			moveCursorToColumn(64);
+			printf("|\n");
+		}
+	}
+	else {
+		moveCursorToColumn(22);
+		moveCursorUp();
+		printResult(degrees * 0.0174532925);
+		moveCursorToColumn(43);
+		printResult(degrees * 1.1111111111);
 		moveCursorToColumn(64);
 		printf("|\n");
 	}
