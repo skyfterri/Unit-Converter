@@ -4,8 +4,6 @@ This C program provides unit conversions for a wide range of physical and mathem
 
 # Table of Contents
 
-# Table of Contents
-
 1. [Features](#features)
 2. [Input Logic](#input-logic)
 3. [Output Logic](#output-logic)
