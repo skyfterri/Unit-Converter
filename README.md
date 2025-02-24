@@ -2,6 +2,16 @@
 
 This C program provides unit conversions for a wide range of physical and mathematical quantities, including volume, length, weight, temperature, energy, power, area, speed, time, pressure, and angles. It interacts with the user to input values, validates the input, and outputs the conversion results in a structured format.
 
+# Table of Contents
+
+# Table of Contents
+
+1. [Features](#features)
+2. [Input Logic](#input-logic)
+3. [Output Logic](#output-logic)
+4. [How to Use](#how-to-use)
+5. [License](#license)
+
 ### **Compiler Compatibility**
 
 This code is written in standard C and should work with any C compiler that supports the C99 standard or later. However, if the compiler does not support or correctly interpret ANSI escape characters, the formatting (cursor movement) may not function as intended. A recommended platform for testing the code is [OnlineGDB](https://www.onlinegdb.com/online_c_compiler#).
